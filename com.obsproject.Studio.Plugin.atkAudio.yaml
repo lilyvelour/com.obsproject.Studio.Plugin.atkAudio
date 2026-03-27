@@ -17,6 +17,7 @@ modules:
       - |
         cd _build/_deps/juce-src
         patch -p1 -N -i ../../../0001-fix-add-flathub-PATHS-to-JUCE.patch
+      - mkdir _build/tests
       - cmake -S . -B _build -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_INSTALL_PREFIX="${FLATPAK_DEST}" -DFETCHCONTENT_FULLY_DISCONNECTED=ON --compile-no-warning-as-error
       - cmake --build _build -j --config Release
     post-install:
