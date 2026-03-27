@@ -14,9 +14,6 @@ modules:
   - name: atkaudio-plugin
     buildsystem: simple
     build-commands:
-      - |
-        cd _build/_deps/juce-src
-        patch -p1 -N -i ../../../0001-fix-add-flathub-PATHS-to-JUCE.patch
       - mkdir _build/tests
       - cmake -S . -B _build -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_INSTALL_PREFIX="${FLATPAK_DEST}" -DFETCHCONTENT_FULLY_DISCONNECTED=ON --compile-no-warning-as-error
       - cmake --build _build -j --config Release
@@ -28,9 +25,7 @@ modules:
         sha256: fd1c09756356afcfae16313e978c0c2439688040ef66e740b2b66f218604af42
       - type: git
         url: https://github.com/juce-framework/JUCE.git
-        commit: 1b460fe0895635a2ab8ac5c00cb5575e33e5dc1e
+        commit: 29396c22c93392d6738e021b83196283d6e4d850
         dest: _build/_deps/juce-src
       - type: file
         path: com.obsproject.Studio.Plugin.atkAudio.metainfo.xml
-      - type: file
-        path: 0001-fix-add-flathub-PATHS-to-JUCE.patch
