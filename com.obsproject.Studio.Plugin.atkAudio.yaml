@@ -14,7 +14,6 @@ modules:
   - name: atkaudio-plugin
     buildsystem: simple
     build-commands:
-      - mkdir _build/tests
       - cmake -S . -B _build -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_INSTALL_PREFIX="${FLATPAK_DEST}" -DFETCHCONTENT_FULLY_DISCONNECTED=ON --compile-no-warning-as-error
       - cmake --build _build -j --config Release
     post-install:
@@ -26,6 +25,6 @@ modules:
       - type: git
         url: https://github.com/juce-framework/JUCE.git
         commit: 29396c22c93392d6738e021b83196283d6e4d850
-        dest: _build/_deps/juce-src
+        dest: _deps/juce-src
       - type: file
         path: com.obsproject.Studio.Plugin.atkAudio.metainfo.xml
